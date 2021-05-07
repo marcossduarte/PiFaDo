@@ -19,7 +19,7 @@ int menu(Fila *ptrF){
             break;
         }
         case 2:{
-            printf("oi");
+            printf("oi");//oioio
             break;
         }
    
