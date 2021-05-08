@@ -2,20 +2,20 @@
 #include <stdlib.h>
 #include <string.h>
 
-typedef struct sTabulacao{
+typedef struct sTabulacao{ // cria a matriz de impressao dos baralhos
     char tabela[7][8][8];
 }tabulacao;
 
 void imprimeCarta(Fila *ptrF){
     tabulacao *ptrT;
-	ptrT = (tabulacao*) malloc(sizeof(tabulacao));
+	ptrT = (tabulacao*) malloc(sizeof(tabulacao)); //inicializa um ponteiro e aloca memoria para imprimir as cartas
     
     char str[4];
     char strNaipe[1];
     
-	switch (ptrF->inicio->naipe){
+	switch (ptrF->inicio->naipe){ //identifica o naipe que sera impresso com base na fila de baralho e
         case 0:{
-            strcpy(strNaipe, "  ");
+            strcpy(strNaipe, "  "); //copia e "transforma" os valores para os naipes de impressao
         }
         case 1:{
             strcpy(strNaipe, "O");
@@ -36,21 +36,21 @@ void imprimeCarta(Fila *ptrF){
         }
 	}
             
-    if(ptrF->inicio->carta == 0 || ptrF->inicio->carta > 9){
-        switch (ptrF->inicio->carta){
+    if(ptrF->inicio->carta == 0 || ptrF->inicio->carta > 9){ // garante que o numero da carta sera um valor válido 
+        switch (ptrF->inicio->carta){ 
             case 0:{
                 strcpy(str, "  ");
                 strncat(str, strNaipe,1);
 				strncat(str," ",1);
             }
             case 1:{
-                strcpy(str, "A");
+                strcpy(str, "A"); 
                 strncat(str, strNaipe,1);
 				strncat(str," ",1);
                 break;
             }
 			case 10:{
-				strncat(itoa(ptrF->inicio->carta, str, 10), strNaipe,1);
+				strncat(itoa(ptrF->inicio->carta, str, 10), strNaipe,1); //itoa converte inteiro em string
 				break;
 			}
             case 11:{
